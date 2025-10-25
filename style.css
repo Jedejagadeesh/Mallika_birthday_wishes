@@ -1,0 +1,89 @@
+/* Reset */
+* {margin:0; padding:0; box-sizing:border-box;}
+html,body{height:100%; overflow:hidden; font-family:"Poppins",sans-serif; background: radial-gradient(circle at bottom,#020024 0%,#090979 40%,#000 100%); color:#fff; text-align:center;}
+
+/* Canvas for fireworks */
+#canvasTop{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1;pointer-events:none;}
+
+/* Countdown */
+#countdownWrap{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;z-index:20;}
+#countdown{font-size:7rem;font-weight:700;color:#00ffff;text-shadow:0 0 30px #00c8ff,0 0 60px #00ffee;padding:20px 40px;border-radius:18px;border:2px solid rgba(255,255,255,0.06);}
+
+/* Screens */
+.screen{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:10;padding:40px;}
+.hiddenScreen{display:none;}
+.hidden{display:none;}
+
+/* Title & subtitle */
+#title{font-family:'Great Vibes',cursive;font-size:4rem;color:#fff;text-shadow:0 0 30px #ffddff,0 0 80px #00ffff; transform:scale(0); transition:transform 1.2s ease, opacity 1.2s ease; opacity:0;}
+#title.show{transform:scale(1); opacity:1;}
+#subtitle{color:#e8f9ff;opacity:0;font-weight:500;margin-top:-6px;font-size:1.3rem; transition:opacity 1.5s ease;}
+
+/* Button */
+button{
+  cursor:pointer;
+  border:none;
+  border-radius:40px;
+  padding:12px 26px;
+  font-size:1.05rem;
+  font-weight:600;
+  background:linear-gradient(90deg,#0077ff,#00c6ff);
+  color:#fff;
+  box-shadow:0 6px 30px rgba(0,200,255,0.12),0 2px 6px rgba(0,0,0,0.4);
+  opacity:0; 
+  transform:scale(0.5);
+  transition:opacity 1.5s ease, transform 1.5s ease;
+}
+button.show{
+  opacity:1;
+  transform:scale(1);
+}
+button:hover{
+  transform:scale(1.1); 
+  box-shadow:0 0 50px #00ffff; 
+  transition:0.3s;
+}
+
+/* Image container */
+.image-container{
+  position:relative;
+  width:min(950px,95vw);
+  height:420px; /* slightly taller */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:11;
+  margin-bottom:20px;
+}
+.photo{
+  position:absolute;
+  width:0;
+  height:0;
+  opacity:0;
+  border-radius:16px;
+  object-fit:cover;
+  border:4px solid rgba(0,255,255,0.14);
+  box-shadow:0 10px 40px rgba(0,200,255,0.08);
+  transition:all 0.8s cubic-bezier(.2,.9,.25,1);
+}
+.photo.show{
+  width:380px; /* extended width */
+  height:380px; /* extended height */
+  opacity:1;
+}
+
+/* Final wish */
+#finalWish{margin-top:12px;max-width:900px;display:none;}
+#finalWish p{font-size:1.05rem;color:#e9fbff;margin-top:6px;}
+
+/* Responsive adjustments */
+@media(max-width:900px){
+    #title{font-size:3rem;}
+    .photo{height:300px;width:300px;}
+}
+@media(max-width:520px){
+    #countdown{font-size:4.5rem;padding:14px 22px;} 
+    #title{font-size:2.5rem;} 
+    .photo{height:220px;width:220px;} 
+    #subtitle{font-size:1rem;}
+}
